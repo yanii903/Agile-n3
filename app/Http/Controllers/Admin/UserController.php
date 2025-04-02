@@ -17,7 +17,7 @@ class UserController extends Controller
          $users = User::all();
 
          // Trả về view 'admin.users.index' và truyền dữ liệu users
-         return view('admin.users.index', compact('users'));
+         return view('admin.user.list', compact('users'));
     }
 
     /**
