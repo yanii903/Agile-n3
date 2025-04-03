@@ -13,6 +13,9 @@ Route::prefix('client')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 });
 
-Route::prefix('admin')->group(function () {
-    Route::get('/', [UserController::class, 'index'])->name('admin.users.list');
+Route::prefix('admin')->name('admin.')->group(function () {
+    // Route::get('/', [UserController::class, 'index'])->name('admin.users.list');
+    Route::resource('users', UserController::class);
+    
 });
+
