@@ -33,10 +33,10 @@
 
 <body class="body-bg-6">
 
-    {{-- <!-- Loader -->
+    <!-- Loader -->
     <div id="cr-overlay">
         <span class="loader"></span>
-    </div> --}}
+    </div>
 
     <!-- Header -->
     @include('client.components.header')
@@ -44,33 +44,7 @@
     <!-- Mobile menu -->
     @include('client.components.mobileMenu'))
 
-
-    <!-- Hero slider -->
-    @include('client.components.heroSlider')
-
-    <!-- Categories -->
-    @include('client.components.category')
-
-    <!-- Popular product -->
-    @include('client.components.popularProduct')
-
-    <!-- Product banner -->
-    @include('client.components.productBanner')
-
-    <!-- Services -->
-    @include('client.components.service')
-
-    <!-- Deal -->
-    @include('client.components.deal')
-
-    <!-- Popular product -->
-    @include('client.components.popularProduct1')
-
-    <!-- Testimonial -->
-    @include('client.components.testimonial')
-
-    <!-- Blog -->
-    @include('client.components.blog')
+    @yield('content')
 
     <!-- Footer -->
     @include('admin.components.footer')

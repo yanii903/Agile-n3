@@ -35,7 +35,7 @@
                                         <a class="dropdown-item" href="checkout.html">Checkout</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="login.html">Login</a>
+                                        <a class="dropdown-item" href="{{ route('client.user.login') }}">Login</a>
                                     </li>
                                 </ul>
                             </li>
