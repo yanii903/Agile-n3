@@ -11,8 +11,10 @@ Route::get('/', function () {
 
 Route::prefix('client')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
+
+    Route::match(['get', 'post'], '/login', [HomeController::class, 'login'])->name('client.user.login');
 });
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('check.admin')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('admin.users.list');
 });
