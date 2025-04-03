@@ -36,6 +36,11 @@
 
 <body>
     <main class="wrapper sb-default ecom">
+        {{-- <!-- Loader -->
+        <div id="cr-overlay">
+            <div class="loader"></div>
+        </div> --}}
+
         @include('admin.components.header')
         @include('admin.components.sidebar')
         @include('admin.components.notify')
@@ -54,7 +59,6 @@
                         {{ session('error') }}
                     </x-alert>
                 @endif
-
 
                 @yield('content')
 

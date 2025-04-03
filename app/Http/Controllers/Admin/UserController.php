@@ -17,7 +17,6 @@ class UserController extends Controller
          // Lấy tất cả người dùng từ bảng 'users'
          $users = User::all();
 
-         // Trả về view 'admin.users.index' và truyền dữ liệu users
          return view('admin.users.list', compact('users'));
     }
 
@@ -69,7 +68,7 @@ class UserController extends Controller
         ]);
 
         // Chuyển hướng về trang danh sách người dùng với thông báo thành công
-        // return redirect()->route('admin.users.edit')->with('success', 'Thêm người dùng thành công.');  
+        // return redirect()->route('admin.users.edit')->with('success', 'Thêm người dùng thành công.');
         return redirect()->route('admin.users.edit',[$user->id])->with('success', 'Thêm người dùng thành công.');
     }
 

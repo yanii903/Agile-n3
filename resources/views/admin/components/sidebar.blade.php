@@ -50,11 +50,11 @@
                          <i class="ri-pages-line"></i><span class="condense">Tài khoản<i
                                  class="drop-arrow ri-arrow-down-s-line"></i></span></a>
                      <ul class="cr-sb-drop condense">
-                         <li><a href="{{ route('admin.users.index') }}" class="cr-page-link drop"><i
+                         <li><a href="#" class="cr-page-link drop"><i
                                      class="ri-checkbox-blank-circle-line"></i></i>Danh sách</a></li>
-                         <li><a href="{{ route('admin.users.create') }}" class="cr-page-link drop"><i
+                         <li><a href="#" class="cr-page-link drop"><i
                                      class="ri-checkbox-blank-circle-line"></i></i>Thêm</a></li>
-                         
+
                      </ul>
                  </li>
                  <li class="cr-sb-item-separator"></li>

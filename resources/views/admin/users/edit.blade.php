@@ -9,7 +9,7 @@
             <div class="cr-breadcrumb">
                 <h5>Sửa tài khoản</h5>
                 <ul>
-                    <li><a href="{{ route('admin.users.index') }}">Trang chủ</a></li>
+                    <li><a href="#">Trang chủ</a></li>
                     <li>Sửa tài khoản</li>
                 </ul>
             </div>
@@ -68,7 +68,7 @@
                                             <label class="form-label">Chức vụ</label>
                                             <select name="role" class="form-control form-select">
                                                 <option @selected( $user->role == 'admin' ) value="admin">Admin</option>
-                                                <option @selected( $user->role == 'customer' ) value="customer">Customer</option>                                                
+                                                <option @selected( $user->role == 'customer' ) value="customer">Customer</option>
                                             </select>
                                         </div>
                                         <div class="col-md-12">
