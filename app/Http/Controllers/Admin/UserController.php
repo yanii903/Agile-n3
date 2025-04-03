@@ -12,12 +12,11 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function list()
+    public function index()
     {
          // Lấy tất cả người dùng từ bảng 'users'
          $users = User::all();
 
-         // Trả về view 'admin.users.index' và truyền dữ liệu users
          return view('admin.users.list', compact('users'));
     }
 

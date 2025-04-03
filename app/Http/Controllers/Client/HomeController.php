@@ -52,7 +52,7 @@ class HomeController extends Controller
                 // Kiểm tra vai trò của người dùng
                 if ($user->role == 'admin') {
                     // Nếu là admin, chuyển hướng tới trang admin
-                    return redirect()->route('admin.users.list')->with('success', 'login successfully!');
+                    return redirect('/admin/users')->with('success', 'login successfully!');
                 } elseif ($user->role == 'customer') {
                     // Nếu là customer, chuyển hướng tới trang chủ
                     session(['name' => $user->name]); // Lưu giá trị vào session với key là 'key'
