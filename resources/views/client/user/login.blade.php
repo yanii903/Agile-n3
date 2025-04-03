@@ -40,10 +40,10 @@
                             <img src="{{ asset('assets/client/img/logo/logo.png') }}" alt="logo">
                         </div>
 
-                        <form class="cr-content-form" action="{{ route('client.user.login') }}" method="POST">
+                        <form class="cr-content-form" action="{{ route('client.user.loginForm') }}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label>Email Address*</label>
+                                <label>Email Address*  12345678</label>
                                 <input type="email" name="email" placeholder="Enter Your Email" class="cr-form-control"
                                     value="{{ old('email') }}">
                                 @error('email')

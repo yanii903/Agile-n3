@@ -21,25 +21,52 @@
                         </a>
                     </form>
                     <div class="cr-right-bar">
-                        <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle cr-right-bar-item" href="javascript:void(0)">
-                                    <i class="ri-user-3-line"></i>
-                                    <span>Account</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item" href="register.html">Register</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="checkout.html">Checkout</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route('client.user.login') }}">Login</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+
+                        @if (session()->has('name'))
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle cr-right-bar-item" href="javascript:void(0)">
+                                        <i class="ri-user-3-line"></i>
+                                        <span>{{ session('name') }}</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <form id="logout-form" action="{{ route('client.user.logout') }}"
+                                                method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+
+                                            <a class="dropdown-item" href="#"
+                                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        @else
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle cr-right-bar-item" href="javascript:void(0)">
+                                        <i class="ri-user-3-line"></i>
+                                        <span>Account</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item"
+                                                href="{{ route('client.user.register') }}">Register</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="checkout.html">Checkout</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('client.user.login') }}">Login</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        @endif
+
                         <a href="wishlist.html" class="cr-right-bar-item">
                             <i class="ri-heart-3-line"></i>
                             <span>Wishlist</span>

@@ -31,6 +31,7 @@
     <!-- Main CSS -->
     <link id="main-css" href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet">
 
+
 </head>
 
 <body>
@@ -53,7 +54,6 @@
                         {{ session('error') }}
                     </x-alert>
                 @endif
-
 
                 @yield('content')
 
