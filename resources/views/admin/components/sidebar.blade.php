@@ -44,24 +44,17 @@
                      </ul>
                  </li>
                  <li class="cr-sb-item-separator"></li>
-                 <li class="cr-sb-title condense">Pages</li>
+                 <li class="cr-sb-title condense">Quản lí</li>
                  <li class="cr-sb-item sb-drop-item">
                      <a href="javascript:void(0)" class="cr-drop-toggle">
-                         <i class="ri-pages-line"></i><span class="condense">Authentication<i
+                         <i class="ri-pages-line"></i><span class="condense">Tài khoản<i
                                  class="drop-arrow ri-arrow-down-s-line"></i></span></a>
                      <ul class="cr-sb-drop condense">
-                         <li><a href="signin.html" class="cr-page-link drop"><i
-                                     class="ri-checkbox-blank-circle-line"></i></i>Login</a></li>
-                         <li><a href="signup.html" class="cr-page-link drop"><i
-                                     class="ri-checkbox-blank-circle-line"></i>Signup</a></li>
-                         <li><a href="forgot.html" class="cr-page-link drop"><i
-                                     class="ri-checkbox-blank-circle-line"></i>Forgot password</a></li>
-                         <li><a href="two-factor.html" class="cr-page-link drop"><i
-                                     class="ri-checkbox-blank-circle-line"></i>two factor</a></li>
-                         <li><a href="reset-password.html" class="cr-page-link drop"><i
-                                     class="ri-checkbox-blank-circle-line"></i>Reset password</a></li>
-                         <li><a href="remember.html" class="cr-page-link drop"><i
-                                     class="ri-checkbox-blank-circle-line"></i>Remember</a></li>
+                         <li><a href="{{ route('admin.users.index') }}" class="cr-page-link drop"><i
+                                     class="ri-checkbox-blank-circle-line"></i></i>Danh sách</a></li>
+                         <li><a href="{{ route('admin.users.create') }}" class="cr-page-link drop"><i
+                                     class="ri-checkbox-blank-circle-line"></i></i>Thêm</a></li>
+                         
                      </ul>
                  </li>
                  <li class="cr-sb-item-separator"></li>
