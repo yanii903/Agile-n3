@@ -1,18 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
 
-use App\Models\User;
+namespace App\Http\Controllers\Admin;
+
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\User;
+use App\Models\Product;
+use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $users = User::all();
+        //
     }
 
     /**
@@ -20,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.Category.add');
     }
 
     /**
@@ -28,7 +33,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        Category::create([
+            'name' => $request->name,
+        ]);
+
+        return redirect()->route('admin.categories.create')->with('success', 'Category created successfully!');
     }
 
     /**

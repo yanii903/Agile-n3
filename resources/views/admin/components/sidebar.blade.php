@@ -18,9 +18,9 @@
                                      class="ri-checkbox-blank-circle-line"></i>ecommerce</a></li>
                          <li><a href="" class="cr-page-link drop"><i
                                      class="ri-checkbox-blank-circle-line"></i>Product list</a></li>
-                         <li><a href="" class="cr-page-link drop"><i
+                         <li><a href="{{ route('admin.products.create') }}" class="cr-page-link drop"><i
                                      class="ri-checkbox-blank-circle-line"></i>Add Product</a></li>
-                         <li><a href="add-category.html" class="cr-page-link drop"><i
+                         <li><a href="{{ route('admin.categories.create') }}" class="cr-page-link drop"><i
                                      class="ri-checkbox-blank-circle-line"></i>Add Category</a></li>
                          <li><a href="add-sub-category.html" class="cr-page-link drop"><i
                                      class="ri-checkbox-blank-circle-line"></i>Add Sub Category</a></li>
