@@ -1,10 +1,15 @@
 <?php
 
+
+
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Product;
+use Illuminate\Support\Facades\Hash;
 
 class CategoryController extends Controller
 {
@@ -18,6 +23,7 @@ class CategoryController extends Controller
 
         // Pass data to the view
         return view('admin.categories.index', compact('categories'));
+
     }
 
     /**
@@ -25,7 +31,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('admin.Category.add');
     }
 
     /**
@@ -33,7 +40,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        Category::create([
+            'name' => $request->name,
+        ]);
+
+        return redirect()->route('admin.categories.create')->with('success', 'Category created successfully!');
     }
 
     /**

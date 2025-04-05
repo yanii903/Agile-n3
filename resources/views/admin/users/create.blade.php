@@ -62,7 +62,7 @@
                                             <label class="form-label">Chức vụ</label>
                                             <select name="role" class="form-control form-select">
                                                 <option @selected(old('role') == "admin" ) value="admin">Admin</option>
-                                                <option @selected(old('role') == "customer" ) value="customer">Customer</option>                                                
+                                                <option @selected(old('role') == "customer" ) value="customer">Customer</option>
                                             </select>
                                         </div>
                                         <div class="col-md-12">
