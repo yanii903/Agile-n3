@@ -20,6 +20,17 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        Category::factory(5)->create();
+        Category::insert([
+            ['name' => 'Áo'],
+            ['name' => 'Quần'],
+            ['name' => 'Giày'],
+            ['name' => 'Phụ kiện'],
+            ['name' => 'Đồ thể thao'],
+            ['name' => 'Đồ ngủ'],
+            ['name' => 'Đồ bơi'],
+            ['name' => 'Đồ công sở'],
+            ['name' => 'Đồ trẻ em'],
+            
+        ]);
     }
 }
