@@ -11,7 +11,7 @@ use App\Http\Middleware\RoleMiddleware;
 Route::get('/', function () {
     return redirect('/client');
 });
- 
+
 Route::prefix('client')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
