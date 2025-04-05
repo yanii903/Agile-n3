@@ -11,7 +11,7 @@ use App\Http\Middleware\RoleMiddleware;
 Route::get('/', function () {
     return redirect('/client');
 });
-
+ 
 Route::prefix('client')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -24,8 +24,7 @@ Route::prefix('client')->group(function () {
     Route::post('/registerForm', [HomeController::class, 'registerForm'])->name('client.user.registerForm');
 });
 
-Route::prefix('admin')->middleware([CheckAdmin::class])->group(function () {
-    Route::get('/', [UserController::class, 'index'])->name('admin.users.list');
+Route::prefix('admin')->name('admin.')->middleware([CheckAdmin::class])->group(function () {
 
-    // Route::resource('users', UserController::class);
+    Route::resource('users', UserController::class);
 });
