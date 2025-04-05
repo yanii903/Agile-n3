@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         // Lấy danh sách người dùng với phân trang (20 bản ghi mỗi trang)
-        $users = User::paginate(20);
+        $users = User::latest('id')->paginate(20);
 
         // Truyền dữ liệu sang view
         return view('admin.users.index', compact('users'));

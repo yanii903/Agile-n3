@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -16,7 +17,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        // Lấy danh sách sản phẩm với phân trang (10 sản phẩm mỗi trang)
+        $products = Product::with('category')->latest('id')->paginate(10);
+
+        // Truyền dữ liệu sang view
+        return view('admin.products.index', compact('products'));
+
     }
 
     /**
@@ -24,6 +30,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+
         $category = Category::all();
 
         return view('admin.product.create', compact('category'));
@@ -34,6 +41,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
         // 1. Xác thực dữ liệu từ form
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -97,3 +105,8 @@ class ProductController extends Controller
         //
     }
 }
+
+
+
+
+

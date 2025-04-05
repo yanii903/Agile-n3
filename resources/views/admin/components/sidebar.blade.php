@@ -47,13 +47,37 @@
                  <li class="cr-sb-title condense">Quản lí</li>
                  <li class="cr-sb-item sb-drop-item">
                      <a href="javascript:void(0)" class="cr-drop-toggle">
-                         <i class="ri-pages-line"></i><span class="condense">Tài khoản<i
+                         <i class="ri-pages-line"></i><span class="condense">Account<i
                                  class="drop-arrow ri-arrow-down-s-line"></i></span></a>
                      <ul class="cr-sb-drop condense">
                          <li><a href="{{ route('admin.users.index') }}" class="cr-page-link drop"><i
-                                     class="ri-checkbox-blank-circle-line"></i></i>Danh sách</a></li>
+                                     class="ri-checkbox-blank-circle-line"></i></i>List</a></li>
                          <li><a href="{{ route('admin.users.create') }}" class="cr-page-link drop"><i
-                                     class="ri-checkbox-blank-circle-line"></i></i>Thêm</a></li>
+                                     class="ri-checkbox-blank-circle-line"></i></i>Create</a></li>
+
+                     </ul>
+                 </li>
+                 <li class="cr-sb-item sb-drop-item">
+                     <a href="javascript:void(0)" class="cr-drop-toggle">
+                         <i class="ri-pages-line"></i><span class="condense">Product<i
+                                 class="drop-arrow ri-arrow-down-s-line"></i></span></a>
+                     <ul class="cr-sb-drop condense">
+                         <li><a href="{{ route('admin.products.index') }}" class="cr-page-link drop"><i
+                                     class="ri-checkbox-blank-circle-line"></i></i>List</a></li>
+                         <li><a href="{{ route('admin.products.create') }}" class="cr-page-link drop"><i
+                                     class="ri-checkbox-blank-circle-line"></i></i>Create</a></li>
+
+                     </ul>
+                 </li>
+                 <li class="cr-sb-item sb-drop-item">
+                     <a href="javascript:void(0)" class="cr-drop-toggle">
+                         <i class="ri-pages-line"></i><span class="condense">Category<i
+                                 class="drop-arrow ri-arrow-down-s-line"></i></span></a>
+                     <ul class="cr-sb-drop condense">
+                         <li><a href="{{ route('admin.categories.index') }}" class="cr-page-link drop"><i
+                                     class="ri-checkbox-blank-circle-line"></i></i>List</a></li>
+                         <li><a href="{{ route('admin.categories.create') }}" class="cr-page-link drop"><i
+                                     class="ri-checkbox-blank-circle-line"></i></i>Create</a></li>
 
                      </ul>
                  </li>

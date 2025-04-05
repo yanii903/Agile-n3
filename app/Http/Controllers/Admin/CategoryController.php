@@ -1,6 +1,7 @@
 <?php
 
 
+
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
@@ -17,7 +18,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        // Fetch categories with pagination (10 items per page)
+        $categories = Category::latest('id')->paginate(10);
+
+        // Pass data to the view
+        return view('admin.categories.index', compact('categories'));
+
     }
 
     /**
@@ -25,6 +31,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+
         return view('admin.Category.add');
     }
 
@@ -33,6 +40,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+
         $validated = $request->validate([
             'name' => 'required|string|max:255',
         ]);
