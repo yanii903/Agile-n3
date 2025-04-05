@@ -14,10 +14,11 @@ class UserController extends Controller
      */
     public function index()
     {
-         // Lấy tất cả người dùng từ bảng 'users'
-         $users = User::all();
+        // Lấy danh sách người dùng với phân trang (20 bản ghi mỗi trang)
+        $users = User::paginate(20);
 
-         return view('admin.users.list', compact('users'));
+        // Truyền dữ liệu sang view
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -128,6 +129,16 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Tìm người dùng theo ID
+        $user = User::findOrFail($id);
+
+        // Xóa người dùng
+        $user->delete();
+
+        // Chuyển hướng về trang danh sách người dùng với thông báo thành công
+        return redirect()->route('admin.users.index')->with('success', 'Xóa người dùng thành công.');
     }
 }
+
+
+
