@@ -33,7 +33,7 @@ class ProductController extends Controller
 
         $category = Category::all();
 
-        return view('admin.product.create', compact('category'));
+        return view('admin.products.create', compact('category'));
     }
 
     /**
