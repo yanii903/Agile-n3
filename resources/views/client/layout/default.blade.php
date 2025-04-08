@@ -42,7 +42,7 @@
     @include('client.components.header')
 
     <!-- Mobile menu -->
-    @include('client.components.mobileMenu'))
+    @include('client.components.mobileMenu')
 
     @if (session('success'))
         <x-alert type="success">
@@ -54,12 +54,12 @@
         <x-alert type="danger">
             {{ session('error') }}
         </x-alert>
-    @endif  
+    @endif
 
     @yield('content')
 
-    <!-- Footer -->
-    @include('admin.components.footer')
+    <!-- footer -->
+    @include('client.components.footer')
 
     <!-- Tab to top -->
     @include('client.components.tapToTop')
@@ -72,6 +72,7 @@
 
     <!-- Side-tool -->
     @include('client.components.slideTool')
+
 
     <!-- Vendor Custom -->
     <script src="{{ asset('assets/client/js/vendor/jquery-3.6.4.min.js') }}"></script>
@@ -86,9 +87,37 @@
     <!-- Main Custom -->
     <script src="{{ asset('assets/client/js/main.js') }}"></script>
 
+    {{-- Quick View --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            $('.model-oraganic-product').on('click', function() {
+                let productId = $(this).data('id');
+
+                $.ajax({
+                    url: '/client/quickview/' + productId,
+                    method: 'GET',
+                    success: function(product) {
+                        // Gán dữ liệu vào modal
+                        $('#modal-product-name').text(product.name);
+                        $('#modal-product-description').text(product.description);
+                        $('#modal-product-category').text(product.category?.name ||
+                            'Không có danh mục');
+
+                        // Format giá tiền (VD: 100000 => 100.000 VND)
+                        let formattedPrice = new Intl.NumberFormat('vi-VN').format(product
+                            .price) + ' VND';
+                        $('#modal-product-price').text(formattedPrice);
+
+                        $('#modal-product-image').attr('src', '/storage/' + product.image);
+                    },
+                    error: function() {
+                        alert('Không thể tải thông tin sản phẩm!');
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
-
-
-<!-- Mirrored from maraviyainfotech.com/projects/carrot/carrot-v21/carrot-html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Nov 2024 15:30:08 GMT -->
 
 </html>

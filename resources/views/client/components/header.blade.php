@@ -307,7 +307,7 @@
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="javascript:void(0)">
+                                <a class="nav-link" href="{{ route('client.user.products') }}">
                                     Products
                                 </a>
                             </li>

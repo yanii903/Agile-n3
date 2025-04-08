@@ -34,13 +34,13 @@
                                 <tr>
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
-                                    <td>{{ 
+                                    <td>{{
                                             $category->created_at ? $category->created_at->format('d/m/Y') : 'N/A'
                                         }}
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-center">
-                                            <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                            <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-sm btn-primary mx-1">Edit</a>
                                             <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" style="display:inline-block;">
                                                 @csrf
                                                 @method('DELETE')

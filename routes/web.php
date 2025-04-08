@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\CategoryController;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\ProductsClientController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckAdmin;
 use App\Http\Middleware\Authenticate;
@@ -21,11 +23,14 @@ Route::prefix('client')->group(function () {
 
     Route::get('/login', [HomeController::class, 'login'])->name('client.user.login');
     Route::match(['get', 'post'], '/logout', [HomeController::class, 'logout'])->name('client.user.logout');
-
     Route::post('/loginForm', [HomeController::class, 'loginForm'])->name('client.user.loginForm');
-
     Route::get('/register', [HomeController::class, 'register'])->name('client.user.register');
     Route::post('/registerForm', [HomeController::class, 'registerForm'])->name('client.user.registerForm');
+
+
+    Route::get('/products', [ProductsClientController::class, 'products'])->name('client.user.products');
+    Route::get('/products/detail/{id}', [ProductsClientController::class, 'detail'])->name('client.user.products.detail');
+    Route::get('/quickview/{id}', [ProductsClientController::class, 'quickview'])->name('client.user.products.quickview');
 });
 
 Route::prefix('admin')->name('admin.')->middleware([CheckAdmin::class])->group(function () {
@@ -34,5 +39,3 @@ Route::prefix('admin')->name('admin.')->middleware([CheckAdmin::class])->group(f
     Route::resource('products', ProductController::class);
     Route::resource('categories', CategoryController::class);
 });
-
-
