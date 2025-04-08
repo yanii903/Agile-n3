@@ -302,47 +302,14 @@
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="javascript:void(0)">
+                                <a class="nav-link" href="javascript:void(0)">
                                     Category
                                 </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item" href="shop-left-sidebar.html">Shop Left
-                                            sidebar</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="shop-right-sidebar.html">Shop
-                                            Right
-                                            sidebar</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="shop-full-width.html">Full
-                                            Width</a>
-                                    </li>
-                                </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="javascript:void(0)">
+                                <a class="nav-link" href="{{ route('client.user.products') }}">
                                     Products
                                 </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item" href="product-left-sidebar.html">product
-                                            Left
-                                            sidebar </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="product-right-sidebar.html">product
-                                            Right
-                                            sidebar </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="product-full-width.html">Product
-                                            Full
-                                            Width
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="javascript:void(0)">

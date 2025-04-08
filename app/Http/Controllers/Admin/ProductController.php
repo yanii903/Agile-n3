@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 
 class ProductController extends Controller
@@ -33,7 +34,7 @@ class ProductController extends Controller
 
         $category = Category::all();
 
-        return view('admin.product.create', compact('category'));
+        return view('admin.products.create', compact('category'));
     }
 
     /**
@@ -69,7 +70,7 @@ class ProductController extends Controller
         ]);
 
         // 4. Chuyển hướng người dùng sau khi lưu thành công
-        return redirect()->route('admin.products.create')->with('success', 'Product created successfully!');
+        return redirect()->route('admin.products.index')->with('success', 'Product created successfully!');
     }
 
 
@@ -102,8 +103,21 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Tìm sản phẩm theo ID
+        $product = Product::findOrFail($id);
+
+        // Nếu có ảnh, xóa ảnh khỏi thư mục storage (nếu có xử lý upload)
+        if ($product->image && Storage::exists($product->image)) {
+            Storage::delete($product->image);
+        }
+
+        // Xóa sản phẩm khỏi database
+        $product->delete();
+
+        // Quay lại trang trước với thông báo
+        return redirect()->back()->with('success', 'Xóa sản phẩm thành công!');
     }
+
 }
 
 

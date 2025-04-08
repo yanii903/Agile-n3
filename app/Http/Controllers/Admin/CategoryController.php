@@ -23,7 +23,6 @@ class CategoryController extends Controller
 
         // Pass data to the view
         return view('admin.categories.index', compact('categories'));
-
     }
 
     /**
@@ -32,7 +31,7 @@ class CategoryController extends Controller
     public function create()
     {
 
-        return view('admin.Category.add');
+        return view('admin.categories.create');
     }
 
     /**
@@ -49,7 +48,7 @@ class CategoryController extends Controller
             'name' => $request->name,
         ]);
 
-        return redirect()->route('admin.categories.create')->with('success', 'Category created successfully!');
+        return redirect()->route('admin.categories.index')->with('success', 'Category created successfully!');
     }
 
     /**
@@ -81,6 +80,18 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Tìm danh mục theo ID, nếu không có sẽ báo lỗi 404
+        $category = Category::findOrFail($id);
+
+        // Kiểm tra xem danh mục có sản phẩm liên quan không
+        if ($category->products()->count() > 0) {
+            return redirect()->back()->with('error', 'Không thể xóa danh mục vì có sản phẩm liên quan.');
+        }
+
+        // Xóa danh mục
+        $category->delete();
+
+        // Quay về trang danh sách với thông báo thành công
+        return redirect()->route('admin.categories.index')->with('success', 'Xóa danh mục thành công!');
     }
 }
