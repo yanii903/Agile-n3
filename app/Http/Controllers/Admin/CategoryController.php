@@ -7,9 +7,6 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\User;
-use App\Models\Product;
-use Illuminate\Support\Facades\Hash;
 
 class CategoryController extends Controller
 {
@@ -92,7 +89,7 @@ class CategoryController extends Controller
         // Chuyển hướng về trang danh sách danh mục với thông báo thành công
         return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully!');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */
