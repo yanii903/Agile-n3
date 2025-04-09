@@ -26,7 +26,7 @@
                             @endif --}}
                             <div class="col-lg-12">
                                     {{-- Form sửa tài khoản   --}}
-                                    <form method="POST" action="{{ route('admin.users.update',[$user->id]) }}" class="row g-3">
+                                    <form method="POST" enctype="multipart/form-data" action="{{ route('admin.users.update',[$user->id]) }}" class="row g-3">
                                         @csrf
                                         @method('PUT')
                                         <div class="col-md-6">

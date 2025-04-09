@@ -57,7 +57,7 @@ class ProductController extends Controller
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('product_images', 'public');
         } else {
-            $imagePath = null; // hoặc một ảnh mặc định
+            $imagePath = null; 
         }
 
         Product::create([
@@ -124,11 +124,12 @@ class ProductController extends Controller
 
             // Lưu ảnh mới
             $imagePath = $request->file('image')->store('product_images', 'public');
+            // dd($imagePath);
         } else {
             $imagePath = $product->image; // Giữ nguyên ảnh cũ nếu không upload ảnh mới
         }
 
-        // Cập nhật thông tin sản phẩm
+        // Cập nhật thông tin sản phẩm 
         $product->update([
             'name' => $request->name,
             'category_id' => $request->category_id,
@@ -138,7 +139,7 @@ class ProductController extends Controller
             'image' => $imagePath,
         ]);
 
-        // Chuyển hướng về trang danh sách sản phẩm với thông báo thành công
+        // Chuyển hướng về trang danh sách sản phẩm với thông báo thành công 
         return redirect()->route('admin.products.index')->with('success', 'Product updated successfully!');
     }
 
