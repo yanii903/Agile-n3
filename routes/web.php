@@ -31,6 +31,7 @@ Route::prefix('client')->group(function () {
     Route::get('/products', [ProductsClientController::class, 'products'])->name('client.user.products');
     Route::get('/products/detail/{id}', [ProductsClientController::class, 'detail'])->name('client.user.products.detail');
     Route::get('/quickview/{id}', [ProductsClientController::class, 'quickview'])->name('client.user.products.quickview');
+    Route::get('/search', [ProductsClientController::class, 'search'])->name('client.products.search');
 });
 
 Route::prefix('admin')->name('admin.')->middleware([CheckAdmin::class])->group(function () {
