@@ -19,66 +19,100 @@
         <div class="col-md-12">
             <div class="cr-card card-default">
                 <div class="cr-card-content">
-                    <form method="POST" action="{{ route('admin.products.update', $product->id) }}" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-                        <div class="form-group">
-                            <label for="name">Product Name</label>
-                            <input type="text" name="name" id="name" class="form-control" value="{{ $product->name }}">
-                            @error('name')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="category_id">Category</label>
-                            <select name="category_id" id="category_id" class="form-control">
-                                <option value="">Select Category</option>
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>
-                                        {{ $category->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('category_id')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="price">Price</label>
-                            <input type="number" name="price" id="price" class="form-control" value="{{ $product->price }}" step="0.01">
-                            @error('price')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="stock">Stock</label>
-                            <input type="number" name="stock" id="stock" class="form-control" value="{{ $product->stock }}">
-                            @error('stock')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea name="description" id="description" class="form-control">{{ $product->description }}</textarea>
-                            @error('description')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="image">Image</label>
-                            <input type="file" name="image" id="image" class="form-control">
-                            @if ($product->image)
-                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" width="100" class="mt-2">
-                            @endif
-                            @error('image')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group mt-3">
-                            <button type="submit" class="btn btn-primary">Update Product</button>
-                            <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">Cancel</a>
-                        </div>
-                    </form>
+                    <div class="row cr-product-uploads">
+                        <form class="d-flex gap-3" action="{{ route('admin.products.update', $product->id) }}" enctype="multipart/form-data"
+                            method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="col-lg-4 mb-991">
+                                <div class="cr-vendor-img-upload">
+                                    <div class="cr-vendor-main-img">
+                                        <div class="avatar-upload">
+                                            <div class="avatar-edit">
+                                                <input type='file' id="product_main" class="cr-image-upload"
+                                                    accept=".png, .jpg, .jpeg" name="image">
+                                                <label><i class="ri-pencil-line"></i></label>
+                                            </div>
+                                            <div class="avatar-preview cr-preview">
+                                                <div class="imagePreview cr-div-preview">
+                                                    @if ($product->image)
+                                                        <img class="cr-image-preview"
+                                                            src="{{ asset('storage/' . $product->image) }}"
+                                                            alt="{{ $product->name }}">
+                                                    @else
+                                                        <img class="cr-image-preview"
+                                                            src="{{ asset('assets/admin/img/product/preview.jpg') }}"
+                                                            alt="edit">
+                                                    @endif
+                                                </div>
+                                                @error('image')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-8">
+                                <div class="cr-vendor-upload-detail">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="inputEmail4" class="form-label">Product name</label>
+                                            <input type="text" class="form-control slug-title" id="inputEmail4"
+                                                name="name" value="{{ $product->name }}">
+                                            @error('name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label class="form-label">Select Categories</label>
+                                            <select class="form-control form-select" name="category_id">
+                                                @foreach ($categories as $value)
+                                                    <option value="{{ $value->id }}"
+                                                        {{ $product->category_id == $value->id ? 'selected' : '' }}>
+                                                        {{ $value->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('category_id')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label class="form-label">Price <span>( In USD )</span></label>
+                                            <input type="number" class="form-control" id="price1" name="price" value="{{ $product->price }}" step="0.01">
+                                            @error('price')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label class="form-label">Stock</label>
+                                            <input type="number" class="form-control" id="stock" name="stock" value="{{ $product->stock }}">
+                                            @error('stock')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <label class="form-label">Description</label>
+                                            <textarea class="form-control" name="description" id="description">{{ $product->description }}</textarea>
+                                            @error('description')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-md-12 mt-3">
+                                            <button type="submit" class="btn btn-primary">Update Product</button>
+                                            <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">Cancel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
