@@ -87,7 +87,14 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Tìm sản phẩm theo ID
+        $product = Product::findOrFail($id);
+
+        // Lấy danh sách danh mục
+        $categories = Category::all();
+
+        // Trả về view 'admin.products.edit' và truyền dữ liệu sản phẩm và danh mục
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -95,7 +102,44 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Tìm sản phẩm theo ID
+        $product = Product::findOrFail($id);
+
+        // Xác thực dữ liệu từ form
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+            'description' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        // Xử lý ảnh nếu có
+        if ($request->hasFile('image')) {
+            // Xóa ảnh cũ nếu tồn tại
+            if ($product->image && Storage::exists($product->image)) {
+                Storage::delete($product->image);
+            }
+
+            // Lưu ảnh mới
+            $imagePath = $request->file('image')->store('product_images', 'public');
+        } else {
+            $imagePath = $product->image; // Giữ nguyên ảnh cũ nếu không upload ảnh mới
+        }
+
+        // Cập nhật thông tin sản phẩm
+        $product->update([
+            'name' => $request->name,
+            'category_id' => $request->category_id,
+            'price' => $request->price,
+            'stock' => $request->stock,
+            'description' => $request->description,
+            'image' => $imagePath,
+        ]);
+
+        // Chuyển hướng về trang danh sách sản phẩm với thông báo thành công
+        return redirect()->route('admin.products.index')->with('success', 'Product updated successfully!');
     }
 
     /**

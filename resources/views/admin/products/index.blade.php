@@ -40,8 +40,7 @@
                                             <td>{{ $product->stock }}</td>
                                             <td>
                                                 @if ($product->image)
-                                                    <img src="{{ asset('storage/' . $product->image) }}"
-                                                        alt="product-{{ $product->id }}" width="50px">
+                                                    <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image">
                                                 @endif
                                             </td>
                                             <td>
