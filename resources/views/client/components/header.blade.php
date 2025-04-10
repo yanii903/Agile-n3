@@ -71,10 +71,18 @@
                             <i class="ri-heart-3-line"></i>
                             <span>Wishlist</span>
                         </a>
-                        <a href="javascript:void(0)" class="cr-right-bar-item Shopping-toggle">
-                            <i class="ri-shopping-cart-line"></i>
-                            <span>Cart</span>
-                        </a>
+                        {{-- Check xem có tài khoản đã đăng nhập chưa --}}
+                        @if (session()->has('name'))
+                            <a href="{{ route('client.carts.index') }}" class="cr-right-bar-item">
+                                <i class="ri-shopping-cart-line"></i>
+                                <span>Cart</span>
+                            </a>
+                        @else
+                            <a href="#" onclick="return alert('Bạn cần đăng nhập.')" class="cr-right-bar-item Shopping-toggle">
+                                <i class="ri-shopping-cart-line"></i>
+                                <span>Cart</span>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
-
+use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ProductsClientController;
@@ -32,6 +32,8 @@ Route::prefix('client')->group(function () {
     Route::get('/products/detail/{id}', [ProductsClientController::class, 'detail'])->name('client.user.products.detail');
     Route::get('/quickview/{id}', [ProductsClientController::class, 'quickview'])->name('client.user.products.quickview');
     Route::get('/search', [ProductsClientController::class, 'search'])->name('client.products.search');
+    Route::get('carts', [CartController::class, 'index'])->name('client.carts.index');
+    Route::post('carts/store', [CartController::class, 'store'])->name('client.carts.store');
 });
 
 Route::prefix('admin')->name('admin.')->middleware([CheckAdmin::class])->group(function () {
@@ -39,4 +41,5 @@ Route::prefix('admin')->name('admin.')->middleware([CheckAdmin::class])->group(f
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
     Route::resource('categories', CategoryController::class);
+
 });

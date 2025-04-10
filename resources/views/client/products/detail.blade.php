@@ -62,7 +62,7 @@
                                 <li><label>Items <span>:</span></label>1</li>
                             </ul>
                         </div>
-                        <form method="POST" action="">
+                        <form method="POST" action="{{ route('client.carts.store') }}">
                             @csrf
 
                             <div class="cr-product-price">
@@ -80,9 +80,12 @@
                                 </div>
 
                                 @if (session()->has('name'))
-                                    <div class="cr-add-button">
+                                    {{-- <div >
                                         <button type="submit" class="cr-button cr-shopping-bag">Add to cart</button>
-                                    </div>
+                                    </div> --}}
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        {{-- <input type="hidden" name="quantity" value="1"> --}}
+                                        <button class="cr-add-button cr-button cr-shopping-bag" type="submit" >Add to Cart</button>
                                 @else
                                     <div class="cr-add-button">
                                         <a href="{{ route('client.user.login') }}" class="cr-button cr-shopping-bag">Add to

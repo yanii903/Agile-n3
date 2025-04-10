@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->double('total_price', 10, 2);
-            $table->enum('status', ['pending', 'processing', 'completed', 'canceled'])->default('pending');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade'); // Người dùng (nullable cho khách vãng lai)
+            $table->foreignId('product_id')->constrained()->onDelete('cascade'); // Sản phẩm
+            $table->integer('quantity')->default(1); // Số lượng sản phẩm
             $table->timestamps();
         });
-
     }
 
     /**
@@ -26,9 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('carts');
     }
 };
-
-
-
