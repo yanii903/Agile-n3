@@ -34,6 +34,7 @@ Route::prefix('client')->group(function () {
     Route::get('/search', [ProductsClientController::class, 'search'])->name('client.products.search');
     Route::get('carts', [CartController::class, 'index'])->name('client.carts.index');
     Route::post('carts/store', [CartController::class, 'store'])->name('client.carts.store');
+    Route::get('carts/destroy/{id}', [CartController::class, 'destroy'])->name('client.carts.destroy');
 });
 
 Route::prefix('admin')->name('admin.')->middleware([CheckAdmin::class])->group(function () {
