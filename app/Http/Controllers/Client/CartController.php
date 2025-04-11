@@ -51,5 +51,5 @@ class CartController extends Controller
         $cartItem->delete();
 
         return redirect()->back()->with('success', 'Đã xóa sản phẩm khỏi giỏ hàng.');
-    }
+        }
 }
