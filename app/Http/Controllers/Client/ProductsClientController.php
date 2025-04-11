@@ -30,10 +30,16 @@ class ProductsClientController extends Controller
     public function detail($id)
     {
         $product = Product::find($id);
+
+        if (!$product) {
+            return redirect()->back()->with('error', 'Sản phẩm không tồn tại.');
+        }
+
         $products = Product::with('category')->get();
 
         return view('client.products.detail', compact('product', 'products'));
     }
+
 
     public function search(Request $request)
     {
@@ -47,7 +53,7 @@ class ProductsClientController extends Controller
         $products = Product::with('category')
             ->when($keyword, function ($query, $keyword) {
                 return $query->where('name', 'LIKE', "%{$keyword}%")
-                             ->orWhere('description', 'LIKE', "%{$keyword}%");
+                    ->orWhere('description', 'LIKE', "%{$keyword}%");
             })
             ->when($category_id, function ($query, $category_id) {
                 return $query->where('category_id', $category_id);

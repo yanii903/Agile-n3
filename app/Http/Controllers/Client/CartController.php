@@ -42,6 +42,14 @@ class CartController extends Controller
     // Xóa sản phẩm khỏi giỏ hàng
     public function destroy($id)
     {
-      
+        $cartItem = Cart::find($id);
+
+        if (!$cartItem) {
+            return redirect()->back()->with('error', 'Không tìm thấy sản phẩm trong giỏ hàng.');
+        }
+
+        $cartItem->delete();
+
+        return redirect()->back()->with('success', 'Đã xóa sản phẩm khỏi giỏ hàng.');
     }
 }
