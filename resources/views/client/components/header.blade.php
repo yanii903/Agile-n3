@@ -4,21 +4,21 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="top-header">
-                    <a href="index.html" class="cr-logo">
+                    <a href="{{ route('home') }}" class="cr-logo">
                         <img src="{{ asset('assets/client/img/logo/logo.png') }}" alt="logo" class="logo">
                         <img src="{{ asset('assets/client/img/logo/dark-logo.png') }}" alt="logo" class="dark-logo">
                     </a>
-                    <form class="cr-search">
-                        <input class="search-input" type="text" placeholder="Search For items...">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>All Categories</option>
+                    <form class="cr-search" action="{{ route('client.products.search') }}" method="GET">
+                        <input type="text" name="keyword" placeholder="Search For items...">
+                        <select class="form-select" name="category" aria-label="Default select example">
+                            <option value="" selected>All Categories</option>
                             <option value="1">Mens</option>
                             <option value="2">Womens</option>
                             <option value="3">Electronics</option>
                         </select>
-                        <a href="javascript:void(0)" class="search-btn">
+                        <button type="submit" class="search-btn">
                             <i class="ri-search-line"></i>
-                        </a>
+                        </button>
                     </form>
                     <div class="cr-right-bar">
 
@@ -305,7 +305,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">
+                                <a class="nav-link" href="{{ route('home') }}">
                                     Home
                                 </a>
                             </li>
